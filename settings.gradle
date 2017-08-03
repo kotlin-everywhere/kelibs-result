@@ -1,0 +1,2 @@
+rootProject.name='ktresult'
+include 'jdk', 'js'
