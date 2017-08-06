@@ -8,6 +8,8 @@ buildscript {
     }
 }
 
+apply plugin: 'idea'
+
 apply plugin: 'kotlin'
 compileKotlin {
     kotlinOptions {
