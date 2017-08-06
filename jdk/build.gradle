@@ -19,6 +19,9 @@ compileTestKotlin {
         jvmTarget = "1.8"
     }
 }
+sourceSets {
+    main.kotlin.srcDirs += '../common'
+}
 
 apply plugin: 'maven'
 task sourcesJar(type: Jar, dependsOn: classes) {
@@ -37,4 +40,5 @@ repositories {
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
+    testCompile 'junit:junit:4.12'
 }
