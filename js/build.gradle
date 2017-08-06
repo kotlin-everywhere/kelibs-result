@@ -16,7 +16,7 @@ compileKotlin2Js {
     kotlinOptions.sourceMap = true
     kotlinOptions.metaInfo = true
     kotlinOptions.main = "noCall"
-    kotlinOptions.outputFile = "$project.buildDir.path/classes/main/${rootProject.name}-${project.name}.js"
+    kotlinOptions.outputFile = "$project.buildDir.path/classes/main/kelibs-result.js"
 }
 compileTestKotlin2Js {
     kotlinOptions.moduleKind = "commonjs"
