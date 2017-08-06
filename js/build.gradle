@@ -24,6 +24,10 @@ compileTestKotlin2Js {
     kotlinOptions.moduleKind = "commonjs"
     kotlinOptions.sourceMap = true
     kotlinOptions.main = "noCall"
+    kotlinOptions.outputFile = "$project.buildDir.path/classes/test/kelibs-result-test.js"
+}
+sourceSets {
+    main.kotlin.srcDirs += '../common'
 }
 
 apply plugin: 'maven'
