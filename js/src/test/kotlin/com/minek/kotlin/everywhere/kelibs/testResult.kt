@@ -18,7 +18,11 @@ class TestResult {
 
     @Test
     fun testMap() {
-        assertEquals(ok(1), ok("Success").map(1))
-        assertEquals(err("Fail"), err("Fail").map(1))
+        // test same type
+        assertEquals(ok(2), ok(1).map { it * 2 })
+        // test change type on map
+        assertEquals(ok(7), ok("Success").map { it.length })
+        // test skip map on error
+        assertEquals(err("Fail"), err("Fail").map { 1 })
     }
 }

@@ -3,9 +3,9 @@ package com.minek.kotlin.everywhere.kelibs.result
 @Suppress("unused")
 sealed class Result<out E, out T>
 
-fun <E, T, T1> Result<E, T>.map(value: T1): Result<E, T1> {
+fun <E, T, T1> Result<E, T>.map(mapper: (T) -> T1): Result<E, T1> {
     return when (this) {
-        is Ok -> Ok<E, T1>(value)
+        is Ok -> Ok<E, T1>(mapper(this.value))
         is Err -> this.of()
     }
 }
