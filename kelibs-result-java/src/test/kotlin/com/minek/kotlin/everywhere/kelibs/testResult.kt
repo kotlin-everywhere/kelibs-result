@@ -25,4 +25,25 @@ class TestResult {
         // test skip map on error
         assertEquals(err("Fail"), err("Fail").map { 1 })
     }
+
+    @Test
+    fun testAndThen() {
+        val toInt: (String) -> Result<String, Int> = {
+            try {
+                Ok(it.toInt())
+            } catch (e: NumberFormatException) {
+                Err("Invalid Number")
+            }
+        }
+        val toNaturalNumber: (Int) -> Result<String, Int> = {
+            if (it > 0) {
+                Ok(it)
+            } else {
+                Err("Not Natural Number")
+            }
+        }
+        assertEquals(ok(1), toInt("1").andThen(toNaturalNumber))
+        assertEquals(err("Not Natural Number"), toInt("0").andThen(toNaturalNumber))
+        assertEquals(err("Invalid Number"), toInt("a").andThen(toNaturalNumber))
+    }
 }

@@ -10,6 +10,13 @@ fun <E, T, T1> Result<E, T>.map(mapper: (T) -> T1): Result<E, T1> {
     }
 }
 
+fun <E, T, T1> Result<E, T>.andThen(mapper: (T) -> Result<E, T1>): Result<E, T1> {
+    return when (this) {
+        is Ok -> mapper(this.value)
+        is Err -> this.of()
+    }
+}
+
 data class Ok<out E, out T>(val value: T) : Result<E, T>()
 
 fun <T> ok(value: T): Result<*, T> {
